@@ -5,8 +5,8 @@ import PhotoList from "./PhotoList";
 import PhotoFavButton from './PhotoFavButton';
 
 
-const PhotoListItem = ({ location, urls, user  }) => {
-  
+const PhotoListItem = (props) => {
+  const { location, urls, user  } =props;
 
   return (
     <div className="photo-list__item">
