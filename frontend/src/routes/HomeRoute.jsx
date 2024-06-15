@@ -5,13 +5,19 @@ import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
 const HomeRoute = (props) => {
-  const {photos, topics} = props;
+  const {photos, topics, displayModal, setDisplayModal} = props;
   const [favorites, setFavorites] = useState([])
 
   return (
     <div className="home-route">
       <TopNavigation topics ={props.topics} isFavPhotoExist ={favorites.length} />
-      <PhotoList photos = {props.photos} favorites={favorites} setFavorites={setFavorites}/>
+      <PhotoList 
+      photos = {props.photos}
+      favorites={favorites}
+      setFavorites={setFavorites}
+      displayModal={displayModal}
+      setDisplayModal={setDisplayModal}
+      />
     </div>
   );
 };
