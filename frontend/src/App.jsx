@@ -9,12 +9,16 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  const [displayModal, setDisplayModal] =useState(false);
+  const [displayModal, setDisplayModal] = useState(false);
   return (
     <div className="App">
     
-    <HomeRoute photos= {photos} topics={topics} displayModal ={displayModal} setDisplayModal={setDisplayModal} />
-    {displayModal && <PhotoDetailsModal />}
+    <HomeRoute photos= {photos} 
+    topics={topics} 
+    displayModal ={displayModal} 
+    setDisplayModal={setDisplayModal} 
+    />
+    {displayModal && <PhotoDetailsModal setDisplayModal={setDisplayModal} />}
     
     </div>
   );
