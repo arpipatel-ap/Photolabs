@@ -5,7 +5,7 @@ import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
 const HomeRoute = (props) => {
-  const {photos, topics, displayModal, setDisplayModal,photoSelected, setPhotoSelected } = props;
+  const {photos, topics, displayModal, setDisplayModal,photoSelected, setPhotoSelected ,selected, setSelected } = props;
   const [favorites, setFavorites] = useState([])
 
   return (
@@ -17,6 +17,8 @@ const HomeRoute = (props) => {
       setFavorites={setFavorites}
       setDisplayModal={setDisplayModal}
       setPhotoSelected ={setPhotoSelected}
+      selected={selected}
+      setSelected= {setSelected}
       />
     </div>
   );
