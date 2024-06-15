@@ -6,7 +6,7 @@ import photos from "mocks/photos";
 
 
 const PhotoList = (props) => {
-  const {photos, favorites, setFavorites,displayModal, setDisplayModal} = props;
+  const {photos, favorites, setFavorites,displayModal, setDisplayModal,photoSelected, setPhotoSelected} = props;
  ;
   return (
     <ul className="photo-list">
@@ -18,6 +18,9 @@ const PhotoList = (props) => {
         setFavorites={setFavorites} 
         displayModal={displayModal}
         setDisplayModal={setDisplayModal}
+        photoSelected ={photoSelected}
+        setPhotoSelected ={setPhotoSelected}
+
           />
       ))}
     </ul>
