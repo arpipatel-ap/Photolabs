@@ -10,7 +10,8 @@ const PhotoDetailsModal = (props) => {
     photoSelected,
     displayModal,
     setDisplayModal,
-    setFavorites,
+    favorites,
+    updateFavorites,
     selected,
     setSelected,
     setPhotoSelected
@@ -31,12 +32,9 @@ const PhotoDetailsModal = (props) => {
       </button>
       <div className="photo-details-modal__images">
         <PhotoFavButton
-          setFavorites={setFavorites}
-          id={id}
-          selected={selected}
-          setSelected={setSelected}
+         favorites={favorites} updateFavorites={updateFavorites} id={id}
         />
-       <img src={urls.full} className="photo-details-modal__image"></img>
+       <img src={urls.full} className="photo-details-modal__image" alt= {`Image by ${user.username}`}></img>
         <div className="photo-list__user-info photo-list__user-details">
           <img src={user.profile} className="photo-list__user-profile" />
           <div>
@@ -51,11 +49,11 @@ const PhotoDetailsModal = (props) => {
         <div className="photo-details-modal__images">
           <PhotoList 
             photos={photos}
-            setFavorites={setFavorites}
+            favorites={favorites}
+            updateFavorites={updateFavorites} 
             setDisplayModal={setDisplayModal}
             setPhotoSelected={setPhotoSelected}
-            selected={selected}
-            setSelected={setSelected}
+            
            />
         </div>
       </div>

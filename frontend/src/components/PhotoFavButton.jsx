@@ -4,24 +4,13 @@ import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton(props) {
-  const {favorites, setFavorites, id, selected, setSelected} = props;
+  // const {favorites, updateFavorites, id} = props;
+  const { favorites = [], updateFavorites, id } = props;
 
-  const handleClick = () => {
-    const newFavoriteitem = !favorites;
-    setFavorites(preFavorites => {
-      if (preFavorites.includes(id)) {
-        setSelected(false);
-        return preFavorites.filter((favoritesitems) => favoritesitems !== id);
-      } else {
-        setSelected(true);
-        return [...preFavorites, id]
-      }
-      })
-  };
   return (
     <div className="photo-list__fav-icon" >
-      <div className="photo-list__fav-icon-svg" onClick={handleClick}>
-      <FavIcon selected={selected}/>
+      <div className="photo-list__fav-icon-svg" onClick={() => {updateFavorites(id)}}>
+      <FavIcon selected={favorites.includes(id)}/>
       </div>
     </div>
   );

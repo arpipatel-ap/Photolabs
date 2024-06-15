@@ -6,9 +6,9 @@ import PhotoFavButton from './PhotoFavButton';
 
 
 const PhotoListItem = (props) => {
-  const { location, urls, user,favorites, setFavorites, displayModal, setDisplayModal,photoSelected, setPhotoSelected ,selected, setSelected } =props;
+  const { id,location, urls, user,favorites, updateFavorites,setDisplayModal, setPhotoSelected } =props;
   
-  //const id = props.photo.id;
+  // const id = props.photo.id;
 
   const handlePhotoClick = () => {
     setPhotoSelected(props)
@@ -16,9 +16,9 @@ const PhotoListItem = (props) => {
   }
   return (
     <div className="photo-list__item">
-       <PhotoFavButton   favorites={favorites} setFavorites={setFavorites} setPhotoSelected={setPhotoSelected} />
+       <PhotoFavButton favorites={favorites} updateFavorites={updateFavorites} id={id} />
 
-      <img className="photo-list__image" src={urls.regular} onClick={handlePhotoClick} alt="Image" />
+      <img className="photo-list__image" src={urls.regular} onClick={handlePhotoClick} alt={`Image by ${user.username}`} />
       <div className="photo-list__user-info photo-list__user-details">
         <img src={user.profile} className="photo-list__user-profile"></img>
         <div>

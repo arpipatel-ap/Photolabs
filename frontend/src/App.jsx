@@ -13,26 +13,40 @@ const App = () => {
   const [selected, setSelected] = useState(false); // favrite button
   const [displayModal, setDisplayModal] = useState(false);
   const [photoSelected, setPhotoSelected] = useState();
+
+  const updateFavorites = (id) => {
+    setFavorites(preFavorites => {
+      console.log(preFavorites)
+      if (preFavorites.includes(id)) {
+        
+        return preFavorites.filter((favoritesitems) => favoritesitems !== id);
+      } else {
+        
+        return [...preFavorites, id]
+      }
+    })
+  };
+
+
   return (
     <div className="App">
     
     <HomeRoute photos= {photos} 
     topics={topics} 
     favorites={favorites}
-    setFavorites= {setFavorites}
+    updateFavorites= {updateFavorites}
     setDisplayModal={setDisplayModal} 
     setPhotoSelected= {setPhotoSelected}
-    selected={selected}
-    setSelected={setSelected}
+    
 
     />
     {displayModal && <PhotoDetailsModal 
     setDisplayModal={setDisplayModal} 
     photoSelected={photoSelected}
     setPhotoSelected ={setPhotoSelected}
-    setFavorites={setFavorites}
-    selected={selected}
-    setSelected= {setSelected}
+    favorites={favorites}
+    updateFavorites={updateFavorites}
+   
     
     
     />}
