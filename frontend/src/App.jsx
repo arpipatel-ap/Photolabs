@@ -30,10 +30,6 @@ const App = () => {
     />
     {state.displayModal && <PhotoDetailsModal 
     state ={state}
-    setDisplayModal={setDisplayModal} 
-    photoSelected={photoSelected}
-    setPhotoSelected ={setPhotoSelected}
-    favorites={favorites}
     updateToFavPhotoIds ={updateToFavPhotoIds}
     onSelectPhoto ={onSelectPhoto}
     onClosePhotoDetailsModal ={onClosePhotoDetailsModal}

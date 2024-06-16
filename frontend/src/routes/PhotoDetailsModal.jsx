@@ -8,10 +8,18 @@ import PhotoList from 'components/PhotoList';
 const PhotoDetailsModal = (props) => {
   const {
     state,
+    photoSelected,
     updateToFavPhotoIds,
     onSelectPhoto,
     onClosePhotoDetailsModal
   } = props;
+  
+  console.log(photoSelected);
+
+
+  if (!photoSelected) {
+    return null;
+  }
 
   const { id, user, urls, location,similar_photos } = photoSelected;
 
