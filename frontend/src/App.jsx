@@ -20,8 +20,9 @@ const App = () => {
   return (
     <div className="App">
     
-    <HomeRoute photos= {photos} 
-    topics={topics} 
+    <HomeRoute 
+    photos= {state.photos} 
+    topics={state.topics} 
     favorites={state.favorites}
     onSelectPhoto ={onSelectPhoto}
     onClosePhotoDetailsModal ={onClosePhotoDetailsModal}

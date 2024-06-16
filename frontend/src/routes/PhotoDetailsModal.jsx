@@ -4,26 +4,14 @@ import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoFavButton from 'components/PhotoFavButton';
 import PhotoList from 'components/PhotoList';
+import useApplicationData from 'hooks/useApplicationData';
 
-const PhotoDetailsModal = (props) => {
-  const {
-    state,
-    photoSelected,
-    updateToFavPhotoIds,
-    onSelectPhoto,
-    onClosePhotoDetailsModal
-  } = props;
-  
-  console.log(photoSelected);
-
-
-  if (!photoSelected) {
-    return null;
-  }
-
-  const { id, user, urls, location,similar_photos } = photoSelected;
-
+const PhotoDetailsModal = () => {
+  const { state, onClosePhotoDetailsModal } = useApplicationData();
+  const { id, user, urls, location, similar_photos } = state.photoSelected;
+  // Photos array here differs from the photos array in HomeRoute.jsx
   const photos = Object.values(similar_photos);
+
 
 
   return (

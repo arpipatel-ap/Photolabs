@@ -3,20 +3,19 @@ import { useState } from 'react';
 import '../styles/HomeRoute.scss';
 import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
+import useApplicationData from 'hooks/useApplicationData';
 
-const HomeRoute = (props) => {
-  const {photos, topics,favorites, updateToFavPhotoIds,
-    onSelectPhoto } = props;
- 
+const HomeRoute = () => {
+  const { state } = useApplicationData();
+  const photos = state.photoData;
+  const topics = state.topicData;
 
   return (
     <div className="home-route">
-      <TopNavigation topics ={props.topics} isFavPhotoExist ={favorites.length} />
+      <TopNavigation  topics ={topics} />
       <PhotoList 
-      photos = {props.photos}
-      favorites={favorites}
-      updateToFavPhotoIds={updateToFavPhotoIds}
-      onSelectPhoto={onSelectPhoto}
+      photos = {photos}
+      
       />
     </div>
   );
