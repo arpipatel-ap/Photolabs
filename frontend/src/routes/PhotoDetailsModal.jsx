@@ -11,28 +11,24 @@ const PhotoDetailsModal = (props) => {
     displayModal,
     setDisplayModal,
     favorites,
-    updateFavorites,
-    selected,
-    setSelected,
-    setPhotoSelected
+    updateToFavPhotoIds,
+    onSelectPhoto,
+    onClosePhotoDetailsModal
   } = props;
 
   const { id, user, urls, location,similar_photos } = photoSelected;
 
   const photos = Object.values(similar_photos);
 
-  const closeButton = () => {
-    setDisplayModal(false);
-  };
 
   return (
-    <div className="photo-details-modal" onClick={closeButton}>
-      <button className="photo-details-modal__close-button">
+    <div className="photo-details-modal" >
+      <button className="photo-details-modal__close-button"onClick={ onClosePhotoDetailsModal}>
         <img src={closeSymbol} alt="close symbol" />
       </button>
       <div className="photo-details-modal__images">
         <PhotoFavButton
-         favorites={favorites} updateFavorites={updateFavorites} id={id}
+         favorites={favorites} updateToFavPhotoIds={updateToFavPhotoIds} id={id}
         />
        <img src={urls.full} className="photo-details-modal__image" alt= {`Image by ${user.username}`}></img>
         <div className="photo-list__user-info photo-list__user-details">
@@ -50,9 +46,9 @@ const PhotoDetailsModal = (props) => {
           <PhotoList 
             photos={photos}
             favorites={favorites}
-            updateFavorites={updateFavorites} 
-            setDisplayModal={setDisplayModal}
-            setPhotoSelected={setPhotoSelected}
+            updateToFavPhotoIds ={updateToFavPhotoIds}
+            onSelectPhoto={onSelectPhoto}
+            
             
            />
         </div>
