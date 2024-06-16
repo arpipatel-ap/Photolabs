@@ -12,8 +12,6 @@ import useApplicationData from 'hooks/useApplicationData';
 const App = () => {
   const {
     state,
-    favorites,
-    displayModal,
     updateToFavPhotoIds,
     onSelectPhoto,
     onClosePhotoDetailsModal
@@ -24,13 +22,14 @@ const App = () => {
     
     <HomeRoute photos= {photos} 
     topics={topics} 
-    favorites={favorites}
-    onSelectPhoto
-    onClosePhotoDetailsModal
+    favorites={state.favorites}
+    onSelectPhoto ={onSelectPhoto}
+    onClosePhotoDetailsModal ={onClosePhotoDetailsModal}
     
 
     />
-    {displayModal && <PhotoDetailsModal 
+    {state.displayModal && <PhotoDetailsModal 
+    state ={state}
     setDisplayModal={setDisplayModal} 
     photoSelected={photoSelected}
     setPhotoSelected ={setPhotoSelected}

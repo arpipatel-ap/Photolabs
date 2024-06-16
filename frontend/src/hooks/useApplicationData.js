@@ -1,17 +1,19 @@
 import React, {useState} from "react";
 
 const useApplicationData =() => {
-  const [state, setState] = useState();
-  const [favorites, setFavorites] = useState([]);
-  const [displayModal, setDisplayModal]= useState(false);
-  const [photoSelected, setPhotoSelected] = useState();
+  const [state, setState] = useState({
+    favorites: [],
+    displayModal: (false),
+    photoSelected: null
+  });
+  const { favorites, displayModal, photoSelected } = state;
 
   const updateToFavPhotoIds = (id) => {
-    setFavorites(preFavorites => {
-      console.log(preFavorites)
+    setState(preState => {
+      const preFavorites = preState.favorites;
       if (preFavorites.includes(id)) {
         
-        return preFavorites.filter((favoritesitems) => favoritesitems !== id);
+        return {preState,favorites :preFavorites.filter((favoritesitems) => favoritesitems !== id)};
       } else {
         
         return [...preFavorites, id]
@@ -20,11 +22,10 @@ const useApplicationData =() => {
   };
 
   const onSelectPhoto= (photo) => {
-    setPhotoSelected(photo)
-    setDisplayModal(prevDisplayModal => !prevDisplayModal);
+    setState((preState) => ({...preState, photoSelected: photo, displayModal: "true"}));
   }
   const onClosePhotoDetailsModal = () => {
-    return setDisplayModal(false);
+    setState((preState) => ({ ...preState, displayModal: false }));
   };
   return {
     state,

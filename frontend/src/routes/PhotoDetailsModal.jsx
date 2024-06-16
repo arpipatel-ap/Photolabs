@@ -7,10 +7,7 @@ import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = (props) => {
   const {
-    photoSelected,
-    displayModal,
-    setDisplayModal,
-    favorites,
+    state,
     updateToFavPhotoIds,
     onSelectPhoto,
     onClosePhotoDetailsModal
@@ -28,7 +25,7 @@ const PhotoDetailsModal = (props) => {
       </button>
       <div className="photo-details-modal__images">
         <PhotoFavButton
-         favorites={favorites} updateToFavPhotoIds={updateToFavPhotoIds} id={id}
+         favorites={state.favorites} updateToFavPhotoIds={updateToFavPhotoIds} id={id}
         />
        <img src={urls.full} className="photo-details-modal__image" alt= {`Image by ${user.username}`}></img>
         <div className="photo-list__user-info photo-list__user-details">
@@ -45,7 +42,7 @@ const PhotoDetailsModal = (props) => {
         <div className="photo-details-modal__images">
           <PhotoList 
             photos={photos}
-            favorites={favorites}
+            favorites={state.favorites}
             updateToFavPhotoIds ={updateToFavPhotoIds}
             onSelectPhoto={onSelectPhoto}
             
