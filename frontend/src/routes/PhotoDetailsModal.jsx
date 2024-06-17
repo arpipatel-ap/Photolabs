@@ -6,12 +6,10 @@ import PhotoFavButton from 'components/PhotoFavButton';
 import PhotoList from 'components/PhotoList';
 import useApplicationData from 'hooks/useApplicationData';
 
-const PhotoDetailsModal = () => {
-  const { state, onClosePhotoDetailsModal } = useApplicationData();
-  const { id, user, urls, location, similar_photos } = state.photoSelected;
-  // Photos array here differs from the photos array in HomeRoute.jsx
-  const photos = Object.values(similar_photos);
-
+const PhotoDetailsModal = ({photos,favorites, updateToFavPhotoIds,onSelectPhoto, selectedPhoto, onClosePhotoDetailsModal,state}) => {
+ console.log(state.selectedPhoto)
+const { id, user, urls, location, similar_photos } = state.selectedPhoto;
+  
 
 
   return (
@@ -37,8 +35,9 @@ const PhotoDetailsModal = () => {
         <div className="photo-details-modal__header">Similar Photos</div>
         <div className="photo-details-modal__images">
           <PhotoList 
-            photos={photos}
+            photos={similar_photos}
             favorites={state.favorites}
+            
             updateToFavPhotoIds ={updateToFavPhotoIds}
             onSelectPhoto={onSelectPhoto}
             

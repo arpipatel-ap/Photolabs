@@ -25,6 +25,7 @@ const App = () => {
     photos= {state.photoData} 
     topics={state.topicData} 
     favorites={state.favorites}
+    updateToFavPhotoIds ={updateToFavPhotoIds}
     getPhotosByTopics={getPhotosByTopics}
     onSelectPhoto ={onSelectPhoto}
     onClosePhotoDetailsModal ={onClosePhotoDetailsModal}
@@ -36,6 +37,7 @@ const App = () => {
     updateToFavPhotoIds ={updateToFavPhotoIds}
     onSelectPhoto ={onSelectPhoto}
     onClosePhotoDetailsModal ={onClosePhotoDetailsModal}
+    
    
     
     

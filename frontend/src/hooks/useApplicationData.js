@@ -36,7 +36,7 @@ function reducer(state, action) {
       case ACTIONS.SELECT_PHOTO:
         return {
           ...state,
-          photoSelected: action.payload,
+          selectedPhoto: action.payload,
           displayModal: true
         }
       case ACTIONS.GET_PHOTOS_BY_TOPICS:
@@ -46,12 +46,12 @@ function reducer(state, action) {
       case ACTIONS.DISPLAY_PHOTO_DETAILS:
         return{
           ...state,
-          photoSelected: action.payload,
+          selectedPhoto: action.payload,
         }
       case ACTIONS.CLOSE_PHOTO:
         return{
         ...state,
-        photoSelected: null,
+        selectedPhoto: null,
         displayModal: false
         }
     default:
@@ -65,7 +65,7 @@ const INITIAL_STATE = {
   photoData: [],
   topicData: [],
   displayModal: false,
-  photoSelected: null
+  selectedPhoto: null
 }
 
 
@@ -73,41 +73,27 @@ const useApplicationData =() => {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
   useEffect(() => {
-    fetch("http://localhost:8001/api/photos")
-      .then((response) => {
-        if (!response.ok) {
-          // If server responds with an error
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
+    fetch("/api/photos")
+      .then((res) => res.json())
       .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
-      .catch((error) => console.error("Error fetching photos: ", error));
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:8001/api/topics")
-      .then((response) => {
-        if (!response.ok) {
-          // If server responds with an error
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
+    fetch("/api/topics")
+      .then((res) => res.json())
       .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
-      .catch((error) => console.error("Error fetching topics: ", error));
   }, []);
+
   const getPhotosByTopics = (topic_id) => {
     fetch(`/api/topics/photos/${topic_id}`)
       .then((response) => response.json())
       .then((data) => dispatch({type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: data}));    
-  };
-
+  }
   const updateToFavPhotoIds = (id) => {
     if (state.favorites.includes(id)) {
-      dispatch({ type: FAV_PHOTO_REMOVED, payload: id });
+      dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: id });
     } else {
-      dispatch({ type: FAV_PHOTO_ADDED, payload: id });
+      dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: id });
     }
   };
 
