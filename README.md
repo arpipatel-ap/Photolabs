@@ -10,9 +10,7 @@ Users can navigate to view photos categorized by different topics
 
 ## Final product
 !["screenshort PhotoLab-homepage"](/home/labber/lighthouse/Photolabs/docs)
-
 !["screenshort PhotoLab-view-photo"](/home/labber/lighthouse/Photolabs/docs/view-photo.png)
-
 !["screenshort PhotoLab-similar-photos"](/home/labber/lighthouse/Photolabs/docs/similar_photos.png)
 
 ## Setup
