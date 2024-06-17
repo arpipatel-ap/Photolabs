@@ -1,7 +1,19 @@
-# react-photolabs
-The PhotoLabs project for the Web Development React course programming.
-
 # Photolabs
+PhotoLabs is a React-based single-page application (SPA) that allows users to view photos in different contexts.
+
+## Features
+Users can view photos from the homepage loaded from the API.
+Users can like an individual photo from anywhere within the application where the photo is displayed
+Users can view a heart icon with a notification in the navigation if there are liked photos
+Users can click on a photo to view a larger version of the photo and relevant / similar photos
+Users can navigate to view photos categorized by different topics
+
+## Final product
+!["screenshort PhotoLab-homepage"](/home/labber/lighthouse/Photolabs/docs)
+
+!["screenshort PhotoLab-view-photo"](/home/labber/lighthouse/Photolabs/docs/view-photo.png)
+
+!["screenshort PhotoLab-similar-photos"](/home/labber/lighthouse/Photolabs/docs/similar_photos.png)
 
 ## Setup
 

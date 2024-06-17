@@ -17,11 +17,13 @@ const { id, user, urls, location, similar_photos } = state.selectedPhoto;
       <button className="photo-details-modal__close-button"onClick={ onClosePhotoDetailsModal}>
         <img src={closeSymbol} alt="close symbol" />
       </button>
+
       <div className="photo-details-modal__images">
         <PhotoFavButton
          favorites={state.favorites} updateToFavPhotoIds={updateToFavPhotoIds} id={id}
         />
        <img src={urls.full} className="photo-details-modal__image" alt= {`Image by ${user.username}`}></img>
+
         <div className="photo-list__user-info photo-list__user-details">
           <img src={user.profile} className="photo-list__user-profile" />
           <div>
@@ -32,16 +34,14 @@ const { id, user, urls, location, similar_photos } = state.selectedPhoto;
             </span>
           </div>
         </div>
+
         <div className="photo-details-modal__header">Similar Photos</div>
         <div className="photo-details-modal__images">
           <PhotoList 
             photos={similar_photos}
             favorites={state.favorites}
-            
             updateToFavPhotoIds ={updateToFavPhotoIds}
             onSelectPhoto={onSelectPhoto}
-            
-            
            />
         </div>
       </div>
