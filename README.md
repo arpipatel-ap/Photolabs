@@ -9,9 +9,9 @@ Users can click on a photo to view a larger version of the photo and relevant / 
 Users can navigate to view photos categorized by different topics
 
 ## Final product
-!["screenshort PhotoLab-homepage"](/home/labber/lighthouse/Photolabs/docs)
-!["screenshort PhotoLab-view-photo"](/home/labber/lighthouse/Photolabs/docs/view-photo.png)
-!["screenshort PhotoLab-similar-photos"](/home/labber/lighthouse/Photolabs/docs/similar_photos.png)
+!["screenshort PhotoLab-homepage"](https://github.com/arpipatel-ap/Photolabs/blob/main/docs/home-page.png)
+!["screenshort PhotoLab-view-photo"](https://github.com/arpipatel-ap/Photolabs/blob/main/docs/view-photo.png)
+!["screenshort PhotoLab-similar-photos"](https://github.com/arpipatel-ap/Photolabs/blob/main/docs/similar_photos.png)
 
 ## Setup
 
