@@ -3,20 +3,14 @@ import PhotoListItem from "./PhotoListItem";
 import "../styles/PhotoList.scss";
 import useApplicationData from "hooks/useApplicationData";
 
-// const PhotoList = ({
-//   photos,
-//   favorites,
-//   updateToFavPhotoIds,
-//   onSelectPhoto,
-// }) =>{
-
-
-  const PhotoList =({
+const PhotoList = ({
+  photos,
+  favorites,
   updateToFavPhotoIds,
   onSelectPhoto,
 }) =>{
-    const { state } = useApplicationData();
-  const photos = state.photoData;
+
+
 
   return (
     <ul className="photo-list">
@@ -24,6 +18,7 @@ import useApplicationData from "hooks/useApplicationData";
         <PhotoListItem 
         key={photo.id} 
         {...photo}
+        favorites ={favorites}
         updateToFavPhotoIds={updateToFavPhotoIds}
         onSelectPhoto={onSelectPhoto}
 

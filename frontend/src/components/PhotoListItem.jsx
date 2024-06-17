@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState } from 'react';
 import "../styles/PhotoListItem.scss";
 import "../styles/PhotoList.scss";
 import PhotoList from "./PhotoList";
@@ -6,7 +6,7 @@ import PhotoFavButton from './PhotoFavButton';
 
 
 const PhotoListItem = (props) => {
-  const { id,location, urls, user, favorites, updateToFavPhotoIds,
+  const { id,location, urls, user,  favorites, updateToFavPhotoIds,
     onSelectPhoto } =props;
   
 

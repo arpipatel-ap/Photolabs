@@ -12,6 +12,7 @@ import useApplicationData from 'hooks/useApplicationData';
 const App = () => {
   const {
     state,
+    getPhotosByTopics,
     updateToFavPhotoIds,
     onSelectPhoto,
     onClosePhotoDetailsModal
@@ -21,9 +22,10 @@ const App = () => {
     <div className="App">
     
     <HomeRoute 
-    photos= {state.photos} 
-    topics={state.topics} 
+    photos= {state.photoData} 
+    topics={state.topicData} 
     favorites={state.favorites}
+    getPhotosByTopics={getPhotosByTopics}
     onSelectPhoto ={onSelectPhoto}
     onClosePhotoDetailsModal ={onClosePhotoDetailsModal}
     

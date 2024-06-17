@@ -6,6 +6,7 @@ export const ACTIONS = {
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   SELECT_PHOTO: 'SELECT_PHOTO',
+  GET_PHOTOS_BY_TOPICS: 'GET_PHOTOS_BY_TOPICS',
   DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
   CLOSE_PHOTO: 'CLOSE_PHOTO'
 }
@@ -38,9 +39,14 @@ function reducer(state, action) {
           photoSelected: action.payload,
           displayModal: true
         }
+      case ACTIONS.GET_PHOTOS_BY_TOPICS:
+          return {
+            ...state, photoData: action.payload
+          }
       case ACTIONS.DISPLAY_PHOTO_DETAILS:
         return{
-          ...state
+          ...state,
+          photoSelected: action.payload,
         }
       case ACTIONS.CLOSE_PHOTO:
         return{
@@ -63,22 +69,39 @@ const INITIAL_STATE = {
 }
 
 
-
-
 const useApplicationData =() => {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
   useEffect(() => {
-    fetch("/api/photos")
-      .then((response) => response.json())
+    fetch("http://localhost:8001/api/photos")
+      .then((response) => {
+        if (!response.ok) {
+          // If server responds with an error
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
+      .catch((error) => console.error("Error fetching photos: ", error));
   }, []);
 
   useEffect(() => {
-    fetch("/api/topics")
-      .then((response) => response.json())
+    fetch("http://localhost:8001/api/topics")
+      .then((response) => {
+        if (!response.ok) {
+          // If server responds with an error
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
+      .catch((error) => console.error("Error fetching topics: ", error));
   }, []);
+  const getPhotosByTopics = (topic_id) => {
+    fetch(`/api/topics/photos/${topic_id}`)
+      .then((response) => response.json())
+      .then((data) => dispatch({type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: data}));    
+  };
 
   const updateToFavPhotoIds = (id) => {
     if (state.favorites.includes(id)) {
@@ -92,8 +115,11 @@ const useApplicationData =() => {
   
   const onClosePhotoDetailsModal = () => dispatch({ type: ACTIONS.CLOSE_PHOTO });
 
+  
+
   return {
     state,
+    getPhotosByTopics,
     updateToFavPhotoIds,
     onSelectPhoto,
     onClosePhotoDetailsModal
